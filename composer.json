@@ -1,0 +1,31 @@
+{
+  "name": "lucid/infuse",
+  "description": "psr7 middlware",
+  "type": "package",
+  "require": {
+    "php": "^5.6 || ^7.0",
+    "psr/http-message": "^1.0",
+    "lucid/signal":"^0.0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.2"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "iwyg",
+      "email": "mail@thomas-appel.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Lucid\\Infuse\\":"src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Lucid\\Infuse\\Tests\\":"tests/"
+    }
+  },
+  "minimum-stability": "dev"
+}
