@@ -22,10 +22,37 @@
 
 ## Usage
 
+### The middleware
+
+Middlewares must implement `Lucid\Infuse\MiddlewareInterface`. They also must return
+an array of `[Psr\Http\Message\ServerRequestInterface $request, Psr\Http\Message\ResponseInterface $respoonse]`.
+
+```php
+<?php
+
+namespace Acme\Middleware;
+
+use Lucid\Infuse\MiddlewareInterface;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+
+class SessoionHandler implements MiddlewareInterface
+{
+    public function handle(Request $request, Response $response)
+    {
+        // ...
+
+        return [$request, $response];
+    }
+}
+```
+
 ### The middleware queue
 
 Use `QueueInterface::add()` to add middlewares to the execution queue.
 Middlewares are executed first in last out.
+The middleware queue itself implements `Lucid\Infuse\MiddlewareInterface` and
+acts as an entrypoint.
 
 
 ```php
