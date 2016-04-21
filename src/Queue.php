@@ -61,7 +61,7 @@ class Queue implements QueueInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(Request $request, Response $response = null)
+    public function handle(Request $request, Response $response)
     {
         $continue = true;
 
@@ -84,7 +84,7 @@ class Queue implements QueueInterface
      *
      * @return array [Request, Response, bool]
      */
-    private function doHandle(Request $request, Response $response = null)
+    private function doHandle(Request $request, Response $response)
     {
         $this->events->dispatch($this->eventName, $event = new RequestEvent($request, $response));
 

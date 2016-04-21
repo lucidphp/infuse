@@ -35,9 +35,9 @@ class QueueTest extends \PHPUnit_Framework_TestCase
             return $args;
         });
 
-        $b->expects($this->once())->method('handle')->with($req)->willReturn([$req, $res]);
+        $b->expects($this->once())->method('handle')->with($req, $res)->willReturn([$req, $res]);
 
-        list ($aq, $bq) = $q->handle($req);
+        list ($aq, $bq) = $q->handle($req, $res);
 
         $this->assertSame($bq, $res);
     }
@@ -65,7 +65,7 @@ class QueueTest extends \PHPUnit_Framework_TestCase
         $a->expects($this->exactly(0))->method('handle');
         $b->expects($this->exactly(0))->method('handle');
 
-        $q->handle($req);
+        $q->handle($req, $res);
     }
 
     /** @test */
@@ -87,7 +87,7 @@ class QueueTest extends \PHPUnit_Framework_TestCase
             return $args;
         });
 
-        list ($aq, $bq) = $q->handle($req);
+        list ($aq, $bq) = $q->handle($req, $res);
         $this->assertFalse($aq === $req);
         $this->assertFalse($bq === $res);
     }

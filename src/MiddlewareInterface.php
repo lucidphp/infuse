@@ -23,5 +23,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  */
 interface MiddlewareInterface
 {
-    public function handle(Request $request, Response $response = null);
+    /**
+     * handle
+     *
+     * @param Request $request
+     * @param Response $response
+     *
+     * @return array [Request, Response]
+     */
+    public function handle(Request $request, Response $response);
 }
